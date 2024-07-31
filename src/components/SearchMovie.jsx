@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Search_Movie } from '../../../backend/utils/constant'
-import { options } from '../../../backend/utils/constant'
 import { useDispatch, useSelector } from 'react-redux' 
 import { setSearchedMovie } from '../redux/searchMovieSlice'
 import { setLoading } from '../redux/userSlice'
 import MoiveList from './moiveList'
 
-
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNzAzMGU1ZWFhYzBhNTEwNzk0ZmNjOTQxZGIxOGNkOSIsInN1YiI6IjY2Njg0ZDExZjMwZWRhMGM4YzNjNjc5NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XYo7Vk0jk5Ho49F1LEco20H-o4urglKYQAG8ntQO6bY'
+  }
+};
 const SearchMovie = () => {
     const [movie, setMovie] = useState("")
     const dispatch = useDispatch()
@@ -18,7 +22,7 @@ const SearchMovie = () => {
       e.preventDefault();
       dispatch(setLoading(true));
       try {
-          const res = await axios.get(`${Search_Movie}${movie}&include_adult=false&language=en-US&page=1`, options);
+          const res = await axios.get(`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`, options);
           const movies = res?.data?.results;
           console.log(movies)
           dispatch(setSearchedMovie({ movie, movies }));

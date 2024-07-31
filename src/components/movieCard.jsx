@@ -1,5 +1,4 @@
 import React from 'react'
-import { Poster_Url } from '../../../backend/utils/constant'
 import { setOpen } from '../redux/movieSlice'
 import { useDispatch } from 'react-redux'
 import { getId } from '../redux/movieSlice'
@@ -18,7 +17,7 @@ const MovieCard = ({poster, movieId}) => {
 
   return (
     <div className='w-48 pr-2' onClick={handleOpen}>
-      <img src = {`${Poster_Url}/${poster}`}/>
+      <img src = {`https://image.tmdb.org/t/p/w500/${poster}`}/>
     </div>
   )
 }

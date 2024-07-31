@@ -15,7 +15,7 @@ function Header() {
   const logoutHandler = async()=>{
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.get(`${import.meta.VITE_API_KEY}/logout`)
+      const res = await axios.get(`https://netflix-backed.vercel.app/user/logout`)
       if(res.data.success){
         toast.success(res.data.msg)
         }

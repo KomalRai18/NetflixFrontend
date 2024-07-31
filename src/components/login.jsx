@@ -26,7 +26,7 @@ function Login() {
       if(isLogin){
         const user = {email, password};
         try {
-          const res = await axios.post(`${import.meta.VITE_API_KEY}/login`, user, {
+          const res = await axios.post(`https://netflix-backed.vercel.app/user/login`, user, {
             headers:{
               "Content-Type":"application/json"
             },
@@ -47,7 +47,7 @@ function Login() {
       } else{
         const user = {fullname, email, password}
         try {
-          const res = await axios.post(`${import.meta.VITE_API_KEY}/signup`, user, {
+          const res = await axios.post(`https://netflix-backed.vercel.app/user/signup`, user, {
             headers:{
               "Content-Type":"application/json",
             },

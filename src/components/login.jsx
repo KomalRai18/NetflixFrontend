@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Header from './header'
 import axios from 'axios'; 
-import { API_End_Point } from '../../../backend/utils/constant.js';
 import toast, {Toaster} from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
@@ -27,7 +26,7 @@ function Login() {
       if(isLogin){
         const user = {email, password};
         try {
-          const res = await axios.post(`https://backend-two-sooty.vercel.app/login`, user, {
+          const res = await axios.post(`${import.meta.VITE_API_KEY}/login`, user, {
             headers:{
               "Content-Type":"application/json"
             },
@@ -48,7 +47,7 @@ function Login() {
       } else{
         const user = {fullname, email, password}
         try {
-          const res = await axios.post(`${API_End_Point}/signup`, user, {
+          const res = await axios.post(`${import.meta.VITE_API_KEY}/signup`, user, {
             headers:{
               "Content-Type":"application/json",
             },

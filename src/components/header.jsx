@@ -16,7 +16,7 @@ function Header() {
   const logoutHandler = async()=>{
     try {
       axios.defaults.withCredentials = true;
-      const res = await axios.get(`https://backend-two-sooty.vercel.app/logout`)
+      const res = await axios.get(`${import.meta.VITE_API_KEY}/logout`)
       if(res.data.success){
         toast.success(res.data.msg)
         }
